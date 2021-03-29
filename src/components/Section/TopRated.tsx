@@ -2,6 +2,7 @@ import { Box, Button, Heading } from "@chakra-ui/react";
 import { useRef, useState } from "react";
 import Slider from "react-slick";
 import VerticalCard from "../Card/VerticalCard";
+import SlideArrow from "../Button/SlideArrow";
 
 export default function TopRated() {
   const settings = {
@@ -11,6 +12,15 @@ export default function TopRated() {
     focusOnSelect: true,
     infinite: false,
     afterChange: (currentSlide: number) => _handleChangeSlide(currentSlide),
+    responsive: [
+      {
+        breakpoint: 770,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 1,
+        },
+      },
+    ],
   };
 
   const sliderRef = useRef<any>();
@@ -29,31 +39,9 @@ export default function TopRated() {
       <Heading size="md" mb="7">
         Top Rated
       </Heading>
-      <Box position="relative" px="5">
+      <Box position="relative" px={["10", "5"]}>
         {showLeftArrow && (
-          <Button
-            position="absolute"
-            left="0"
-            top="20"
-            w="max"
-            zIndex="1"
-            onClick={sliderRef.current?.slickPrev}
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-              width="24px"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M15 19l-7-7 7-7"
-              />
-            </svg>
-          </Button>
+          <SlideArrow typeArrow="left" onClick={sliderRef.current?.slickPrev} />
         )}
 
         <Slider {...settings} ref={sliderRef}>
@@ -67,29 +55,10 @@ export default function TopRated() {
           <VerticalCard />
         </Slider>
         {showRightArrow && (
-          <Button
-            position="absolute"
-            right="0"
-            top="20"
-            w="max"
-            zIndex="1"
+          <SlideArrow
+            typeArrow="right"
             onClick={sliderRef.current?.slickNext}
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-              width="24px"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M9 5l7 7-7 7"
-              />
-            </svg>
-          </Button>
+          />
         )}
       </Box>
     </Box>

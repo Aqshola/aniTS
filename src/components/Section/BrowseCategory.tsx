@@ -11,6 +11,15 @@ export default function BrowseCategory() {
     slidesToScroll: 3,
     focusOnSelect: true,
     afterChange: (currentSlide: number) => _handleChangeSlide(currentSlide),
+    responsive: [
+      {
+        breakpoint: 1000,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 2,
+        },
+      },
+    ],
   };
 
   const sliderRef = useRef<any>();
@@ -29,7 +38,13 @@ export default function BrowseCategory() {
       <Heading size="md" mb="7">
         Browse by Category
       </Heading>
-      <Box px="5" mb="5" w="96" display="flex" justifyContent="space-between">
+      <Box
+        px={["0", "5"]}
+        mb="5"
+        w="96"
+        display="flex"
+        justifyContent="space-between"
+      >
         <Button variant="outline" size="sm">
           Action
         </Button>
@@ -43,10 +58,14 @@ export default function BrowseCategory() {
           See All
         </Button>
       </Box>
-      <Box position="relative" px="5">
+      <Box
+        position="relative"
+        px={["10", "5"]}
+        display="flex"
+        flexDirection="column"
+      >
         {showLeftArrow && (
-          
-          <SlideArrow typeArrow="left" />
+          <SlideArrow typeArrow="left" onClick={sliderRef.current?.slickPrev} />
         )}
 
         <Slider {...settings} ref={sliderRef}>
@@ -58,9 +77,10 @@ export default function BrowseCategory() {
         </Slider>
 
         {showRightArrow && (
-          
-
-          <SlideArrow typeArrow="right" />
+          <SlideArrow
+            typeArrow="right"
+            onClick={sliderRef.current?.slickNext}
+          />
         )}
       </Box>
     </Box>

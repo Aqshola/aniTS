@@ -1,15 +1,20 @@
 import { Button } from "@chakra-ui/react";
 
-export default function SlideArrow(props: { typeArrow: "left" | "right" }) {
+export default function SlideArrow(props: {
+  typeArrow: "left" | "right";
+  onClick: () => void;
+}) {
   return (
     <>
       <Button
         position="absolute"
-        left="0"
+        left={props.typeArrow === "left" ? "0" : "unset"}
+        right={props.typeArrow === "right" ? "0" : "unset"}
         top="20"
         w="max"
         zIndex="1"
-        // onClick={sliderRef.current?.slickPrev}
+        display={["none", "flex"]}
+        onClick={props.onClick}
       >
         {props.typeArrow === "left" && (
           <svg

@@ -8,10 +8,10 @@ import {
 } from "@chakra-ui/react";
 export default function Nav() {
   return (
-    <Box display="flex" w="full" py="3">
+    <Box display="flex" w="full" py="3" alignItems="center">
       <Heading size="md">MovieApp</Heading>
       <Spacer />
-      <InputGroup w="max-content">
+      <InputGroup w={["40", "max-content"]}>
         <InputLeftElement
           children={
             <svg

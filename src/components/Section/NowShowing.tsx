@@ -13,6 +13,15 @@ export default function NowShowing() {
     autoplay: true,
     autoplaySpeed: 4000,
     arrows: false,
+    responsive: [
+      {
+        breakpoint: 770,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+        },
+      },
+    ],
   };
 
   return (
@@ -21,7 +30,7 @@ export default function NowShowing() {
         Now Showing
       </Heading>
       <Box position="relative">
-        <Box paddingX="5">
+        <Box paddingX={["0", "0", "3"]}>
           <Slider {...settings} className="relative">
             <HorizontalCard title="Shazam" />
             <HorizontalCard title="Captain Thunder" />

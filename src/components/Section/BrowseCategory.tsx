@@ -1,8 +1,9 @@
-import { Box, Button, Heading } from "@chakra-ui/react";
+import { Box, Heading } from "@chakra-ui/react";
 import { useRef, useState } from "react";
 import Slider from "react-slick";
 import SlideArrow from "../Button/SlideArrow";
 import VerticalCard from "../Card/VerticalCard";
+import LinkButton from "../Button/LinkButton";
 
 export default function BrowseCategory() {
   const settings = {
@@ -54,18 +55,13 @@ export default function BrowseCategory() {
         display="flex"
         justifyContent="space-between"
       >
-        <Button variant="outline" size="sm">
-          Action
-        </Button>
-        <Button variant="outline" size="sm">
-          Adventure
-        </Button>
-        <Button variant="outline" size="sm">
-          Slice of Life
-        </Button>
-        <Button variant="ghost" size="sm" ml="3" fontWeight="bold">
+        <LinkButton variant="outline">Action</LinkButton>
+
+        <LinkButton variant="outline">Adventure</LinkButton>
+        <LinkButton variant="outline">Slice of life</LinkButton>
+        <LinkButton variant="ghost" fontWeight="bold" ml="3">
           See All
-        </Button>
+        </LinkButton>
       </Box>
       <Box position="relative" px={["10", "10", "5"]}>
         {showLeftArrow && (

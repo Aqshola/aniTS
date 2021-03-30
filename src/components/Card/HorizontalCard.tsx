@@ -65,14 +65,40 @@ export default function HorizontalCard(props: Props) {
       </Box>
       <Box
         w="full"
-        h="56"
+        h="60"
         rounded="md"
         display={["flex", "flex", "none"]}
         backgroundImage="url('assets/tester.jpg')"
         bgSize="cover"
         bgPosition="center"
         mb="20"
-      ></Box>
+        position="relative"
+        flexDirection="column"
+        justifyContent="flex-end"
+        p="5"
+      >
+        <Box
+          position="absolute"
+          top="0"
+          left="0"
+          backgroundImage=" linear-gradient(
+          to bottom,
+          rgba(0, 0, 0, 0),
+          rgba(0, 0, 0, 0.5)
+        );"
+          display="block"
+          w="full"
+          h="full"
+        ></Box>
+        <Box zIndex="2">
+          <Heading size="lg" textColor="white">
+            Justice League Snyder Cut
+          </Heading>
+          <Text textColor="white" fontSize="md">
+            2019 - Action | Fantasy
+          </Text>
+        </Box>
+      </Box>
     </>
   );
 }

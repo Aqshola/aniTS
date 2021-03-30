@@ -16,15 +16,43 @@ export default function VerticalCard() {
         </Box>
       </Box>
       <Box
-        w="36"
+        w="38"
+        ml="2"
         display={["flex", "flex", "none"]}
         border="1px solid black"
-        h="56"
+        h="60"
         backgroundImage="url('assets/tester2.jpg')"
         backgroundSize="cover"
         bgPosition="center"
         rounded="md"
-      ></Box>
+        flexDirection="column"
+        justifyContent="flex-end"
+        p="5"
+        position="relative"
+      >
+        <Box
+          w="full"
+          h="full"
+          position="absolute"
+          display="block"
+          backgroundImage=" linear-gradient(
+          to bottom,
+          rgba(0, 0, 0, 0),
+          rgba(0, 0, 0, 0.5)
+        );"
+          left="0"
+          top="0"
+          zIndex="1"
+        ></Box>
+        <Box zIndex="2">
+          <Heading size="xs" textColor="white">
+            Avengers Endgame
+          </Heading>
+          <Text textColor="white" fontSize="xs">
+            2021 - Action|Fantasy{" "}
+          </Text>
+        </Box>
+      </Box>
     </>
   );
 }

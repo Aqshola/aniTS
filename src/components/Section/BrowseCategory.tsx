@@ -63,7 +63,7 @@ export default function BrowseCategory() {
           See All
         </LinkButton>
       </Box>
-      <Box position="relative" px={["10", "10", "5"]}>
+      <Box position="relative" px={["0", "0", "5"]} w="full">
         {showLeftArrow && (
           <SlideArrow typeArrow="left" onClick={sliderRef.current?.slickPrev} />
         )}

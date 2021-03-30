@@ -53,7 +53,7 @@ export default function TopRated() {
         </Button>
       </Box>
 
-      <Box position="relative" px={["10", "10", "5"]}>
+      <Box position="relative" px={["0", "0", "5"]}>
         {showLeftArrow && (
           <SlideArrow typeArrow="left" onClick={sliderRef.current?.slickPrev} />
         )}

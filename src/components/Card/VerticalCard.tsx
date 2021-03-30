@@ -27,7 +27,6 @@ export default function VerticalCard() {
         w="44"
         ml="4"
         display={["flex", "flex", "none"]}
-        border="1px solid black"
         h="64"
         rounded="md"
         flexDirection="column"

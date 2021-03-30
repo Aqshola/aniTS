@@ -13,10 +13,19 @@ export default function BrowseCategory() {
     afterChange: (currentSlide: number) => _handleChangeSlide(currentSlide),
     responsive: [
       {
+        breakpoint: 1200,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 3,
+          dots: true,
+        },
+      },
+      {
         breakpoint: 1000,
         settings: {
           slidesToShow: 2,
           slidesToScroll: 2,
+          dots: true,
         },
       },
     ],
@@ -58,12 +67,7 @@ export default function BrowseCategory() {
           See All
         </Button>
       </Box>
-      <Box
-        position="relative"
-        px={["10", "5"]}
-        display="flex"
-        flexDirection="column"
-      >
+      <Box position="relative" px={["10", "10", "5"]}>
         {showLeftArrow && (
           <SlideArrow typeArrow="left" onClick={sliderRef.current?.slickPrev} />
         )}

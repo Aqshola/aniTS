@@ -13,8 +13,9 @@ export default function SlideArrow(props: {
         top="20"
         w="max"
         zIndex="1"
-        display={["none", "flex"]}
+        display={["none", "none", "flex"]}
         onClick={props.onClick}
+        border="1px solid black"
       >
         {props.typeArrow === "left" && (
           <svg

@@ -4,7 +4,7 @@ import { Box, Heading, Image, Text } from "@chakra-ui/react";
 export default function VerticalCard() {
   return (
     <>
-      <Box display={["none", "flex"]} flexDir="column" w="52">
+      <Box display={["none", "none", "flex"]} flexDir="column" w="52">
         <Box w="100%" h="64" rounded="lg" bgColor="gray.700" overflow="hidden">
           <Image src="assets/tester2.jpg" boxSize="100%" objectFit="cover" />
         </Box>
@@ -17,7 +17,7 @@ export default function VerticalCard() {
       </Box>
       <Box
         w="36"
-        display={["flex", "none"]}
+        display={["flex", "flex", "none"]}
         border="1px solid black"
         h="56"
         backgroundImage="url('assets/tester2.jpg')"

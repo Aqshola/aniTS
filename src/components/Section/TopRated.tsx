@@ -1,4 +1,4 @@
-import { Box, Button, Heading } from "@chakra-ui/react";
+import { Box, Button, Spacer, Heading } from "@chakra-ui/react";
 import { useRef, useState } from "react";
 import Slider from "react-slick";
 import VerticalCard from "../Card/VerticalCard";
@@ -14,10 +14,19 @@ export default function TopRated() {
     afterChange: (currentSlide: number) => _handleChangeSlide(currentSlide),
     responsive: [
       {
-        breakpoint: 770,
+        breakpoint: 1200,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 3,
+          dots: true,
+        },
+      },
+      {
+        breakpoint: 1000,
         settings: {
           slidesToShow: 2,
-          slidesToScroll: 1,
+          slidesToScroll: 2,
+          dots: true,
         },
       },
     ],
@@ -36,10 +45,15 @@ export default function TopRated() {
 
   return (
     <Box display="flex" flexDir="column" mt="10">
-      <Heading size="md" mb="7">
-        Top Rated
-      </Heading>
-      <Box position="relative" px={["10", "5"]}>
+      <Box display="flex" alignItems="center" mb="7">
+        <Heading size="md">Top Rated</Heading>
+        <Spacer />
+        <Button size="sm" variant="ghost" fontWeight="bold">
+          See all
+        </Button>
+      </Box>
+
+      <Box position="relative" px={["10", "10", "5"]}>
         {showLeftArrow && (
           <SlideArrow typeArrow="left" onClick={sliderRef.current?.slickPrev} />
         )}

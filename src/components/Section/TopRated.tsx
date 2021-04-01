@@ -3,6 +3,7 @@ import { useRef, useState } from "react";
 import Slider from "react-slick";
 import VerticalCard from "../Card/VerticalCard";
 import SlideArrow from "../Button/SlideArrow";
+import { MotionBox } from "../Motion/MotionComponent";
 
 export default function TopRated(props: { title: string }) {
   const settings = {
@@ -31,6 +32,16 @@ export default function TopRated(props: { title: string }) {
       },
     ],
   };
+  const item = {
+    hidden: {
+      y: 20,
+      opacity: 0,
+    },
+    visible: {
+      y: 0,
+      opacity: 1,
+    },
+  };
 
   const sliderRef = useRef<any>();
   const [showRightArrow, setshowRightArrow] = useState<boolean>(false);
@@ -44,7 +55,7 @@ export default function TopRated(props: { title: string }) {
   };
 
   return (
-    <Box display="flex" flexDir="column" mt="10">
+    <MotionBox display="flex" flexDir="column" mt="10" variants={item}>
       <Box display="flex" alignItems="center" mb="7">
         <Heading size="md">{props.title}</Heading>
       </Box>
@@ -71,6 +82,6 @@ export default function TopRated(props: { title: string }) {
           />
         )}
       </Box>
-    </Box>
+    </MotionBox>
   );
 }

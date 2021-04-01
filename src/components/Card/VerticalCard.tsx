@@ -40,6 +40,9 @@ export default function VerticalCard() {
       <MotionBox
         initial="rest"
         whileHover="hover"
+        whileTap={{
+          scale: 0.9,
+        }}
         w="40"
         mr="4"
         mb="3"

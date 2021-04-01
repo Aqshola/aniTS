@@ -2,6 +2,7 @@ import React from "react";
 import Slider from "react-slick";
 import { Box, Heading } from "@chakra-ui/react";
 import HorizontalCard from "../Card/HorizontalCard";
+import { MotionBox } from "../Motion/MotionComponent";
 
 export default function NowShowing() {
   const settings = {
@@ -24,8 +25,25 @@ export default function NowShowing() {
     ],
   };
 
+  const item = {
+    hidden: {
+      y: 20,
+      opacity: 0,
+    },
+    visible: {
+      y: 0,
+      opacity: 1,
+    },
+  };
+
   return (
-    <Box marginTop="16" display="flex" w="full" flexDir="column">
+    <MotionBox
+      marginTop="16"
+      display="flex"
+      w="full"
+      flexDir="column"
+      variants={item}
+    >
       <Heading size="lg" mb="7">
         Now Showing
       </Heading>
@@ -39,6 +57,6 @@ export default function NowShowing() {
           </Slider>
         </Box>
       </Box>
-    </Box>
+    </MotionBox>
   );
 }

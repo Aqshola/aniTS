@@ -4,6 +4,7 @@ import Detail from "./components/Pages/Detail";
 import Nav from "./components/Nav/Nav";
 import { Container } from "@chakra-ui/react";
 import { MotionBox } from "./components/Motion/MotionComponent";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
 function App() {
   const containerAnimate = {
@@ -31,7 +32,16 @@ function App() {
       variants={containerAnimate}
     >
       <Nav />
-      <Homepage />
+      <Router>
+        <Switch>
+          <Route exact path="/">
+            <Homepage />
+          </Route>
+          <Route exact path="/detail">
+            <Detail />
+          </Route>
+        </Switch>
+      </Router>
     </MotionBox>
   );
 }

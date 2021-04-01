@@ -10,6 +10,7 @@ export default function Nav() {
   return (
     <Box display="flex" w="full" py="3" alignItems="center">
       <Heading size="md">MovieApp</Heading>
+
       <Spacer />
       <InputGroup w={["40", "max-content"]}>
         <InputLeftElement

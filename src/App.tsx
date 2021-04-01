@@ -9,7 +9,7 @@ function App() {
     <Container maxW="container.xl" margin="auto" padding="5">
       <Nav />
 
-      <Detail />
+      <Homepage />
     </Container>
   );
 }

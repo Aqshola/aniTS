@@ -1,30 +1,44 @@
 import React from "react";
 import { Box, Heading, Image, Text } from "@chakra-ui/react";
 
+import { MotionBox, MotionImage } from "../Motion/MotionComponent";
+
 export default function VerticalCard() {
+  const imageMotion = {
+    hover: {
+      scale: 1.3,
+    },
+  };
   return (
     <>
-      <Box
+      <MotionBox
         display={["none", "none", "flex"]}
         flexDir="column"
         w="52"
-        _hover={{
-          transform: "scale(0.9)",
-          transition: "0.3s",
+        whileHover={{
+          scale: 0.8,
         }}
         mb="10"
       >
-        <Box w="100%" h="64" rounded="lg" bgColor="gray.700" overflow="hidden">
+        <MotionBox
+          w="100%"
+          h="64"
+          rounded="lg"
+          bgColor="gray.700"
+          overflow="hidden"
+        >
           <Image src="assets/tester2.jpg" boxSize="100%" objectFit="cover" />
-        </Box>
+        </MotionBox>
         <Box>
           <Heading as="h1" fontWeight="semibold" size="md" w="full">
             Justice League SnyderCut
           </Heading>
           <Text>2021 - Action|Fantasy </Text>
         </Box>
-      </Box>
-      <Box
+      </MotionBox>
+      <MotionBox
+        initial="rest"
+        whileHover="hover"
         w="40"
         mr="4"
         mb="3"
@@ -46,14 +60,15 @@ export default function VerticalCard() {
           top="0"
           left="0"
         >
-          <Image
+          <MotionImage
             src="assets/tester2.jpg"
             objectFit="cover"
             zIndex="0"
-            _groupHover={{
-              transform: "scale(1.3)",
-              transition: "all 0.3s",
-            }}
+            variants={imageMotion}
+            // _groupHover={{
+            //   transform: "scale(1.3)",
+            //   transition: "all 0.3s",
+            // }}
           />
         </Box>
         <Box
@@ -78,7 +93,7 @@ export default function VerticalCard() {
             2021 - Action|Fantasy{" "}
           </Text>
         </Box>
-      </Box>
+      </MotionBox>
     </>
   );
 }

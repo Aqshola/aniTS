@@ -22,27 +22,21 @@ function App() {
   };
 
   return (
-    <MotionBox
-      as={Container}
-      maxW="container.xl"
-      margin="auto"
-      padding="5"
-      initial="hidden"
-      animate="visible"
-      variants={containerAnimate}
-    >
+    <Container maxW="container.xl" margin="auto" padding="5">
       <Nav />
-      <Router>
-        <Switch>
-          <Route exact path="/">
-            <Homepage />
-          </Route>
-          <Route exact path="/detail">
-            <Detail />
-          </Route>
-        </Switch>
-      </Router>
-    </MotionBox>
+      <MotionBox variants={containerAnimate} initial="hidden" animate="visible">
+        <Router>
+          <Switch>
+            <Route exact path="/">
+              <Homepage />
+            </Route>
+            <Route exact path="/detail">
+              <Detail />
+            </Route>
+          </Switch>
+        </Router>
+      </MotionBox>
+    </Container>
   );
 }
 

@@ -1,10 +1,10 @@
-import { Box, Button, Spacer, Heading } from "@chakra-ui/react";
+import { Box, Heading } from "@chakra-ui/react";
 import { useRef, useState } from "react";
 import Slider from "react-slick";
 import VerticalCard from "../Card/VerticalCard";
 import SlideArrow from "../Button/SlideArrow";
 
-export default function TopRated() {
+export default function TopRated(props: { title: string }) {
   const settings = {
     speed: 500,
     slidesToShow: 5,
@@ -46,11 +46,7 @@ export default function TopRated() {
   return (
     <Box display="flex" flexDir="column" mt="10">
       <Box display="flex" alignItems="center" mb="7">
-        <Heading size="md">Top Rated</Heading>
-        <Spacer />
-        <Button size="sm" variant="ghost" fontWeight="bold">
-          See all
-        </Button>
+        <Heading size="md">{props.title}</Heading>
       </Box>
 
       <Box position="relative" px={["0", "0", "5"]}>

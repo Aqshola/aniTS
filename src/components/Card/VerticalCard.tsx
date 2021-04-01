@@ -25,7 +25,8 @@ export default function VerticalCard() {
       </Box>
       <Box
         w="44"
-        ml="4"
+        mr="4"
+        mb="3"
         display={["flex", "flex", "none"]}
         h="64"
         rounded="md"

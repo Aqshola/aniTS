@@ -24,7 +24,7 @@ export default function VerticalCard() {
         </Box>
       </Box>
       <Box
-        w="44"
+        w="40"
         mr="4"
         mb="3"
         display={["flex", "flex", "none"]}
@@ -37,12 +37,17 @@ export default function VerticalCard() {
         overflow="hidden"
         role="group"
       >
-        <Box w="full" h="full">
+        <Box
+          w="full"
+          h="full"
+          display="flex"
+          position="absolute"
+          top="0"
+          left="0"
+        >
           <Image
             src="assets/tester2.jpg"
-            position="absolute"
-            top="0"
-            left="0"
+            objectFit="cover"
             zIndex="0"
             _groupHover={{
               transform: "scale(1.3)",

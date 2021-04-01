@@ -1,4 +1,5 @@
 import { Button } from "@chakra-ui/react";
+import { MotionButton } from "../Motion/MotionComponent";
 
 export default function SlideArrow(props: {
   typeArrow: "left" | "right";
@@ -6,7 +7,7 @@ export default function SlideArrow(props: {
 }) {
   return (
     <>
-      <Button
+      <MotionButton
         position="absolute"
         left={props.typeArrow === "left" ? "0" : "unset"}
         right={props.typeArrow === "right" ? "0" : "unset"}
@@ -14,10 +15,15 @@ export default function SlideArrow(props: {
         w="min"
         p="2"
         rounded="full"
+        whileTap={{
+          scale: 0.9,
+        }}
         zIndex="1"
         display={["none", "none", "flex"]}
         onClick={props.onClick}
-        colorScheme="facebook"
+        bgColor="blue.200"
+        outline="none"
+        border="none"
       >
         {props.typeArrow === "left" && (
           <svg
@@ -51,7 +57,7 @@ export default function SlideArrow(props: {
             />
           </svg>
         )}
-      </Button>
+      </MotionButton>
     </>
   );
 }

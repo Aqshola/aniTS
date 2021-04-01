@@ -9,14 +9,15 @@ export default function VerticalCard() {
       scale: 1.3,
     },
   };
+
   return (
     <>
       <MotionBox
         display={["none", "none", "flex"]}
         flexDir="column"
         w="52"
-        whileHover={{
-          scale: 0.8,
+        whileTap={{
+          scale: 0.9,
         }}
         mb="10"
       >

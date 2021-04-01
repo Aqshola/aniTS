@@ -13,3 +13,8 @@ export type MotionImgProps = Merge<
   HTMLChakraProps<"img">,
   HTMLMotionProps<"img">
 >;
+
+export type MotionBtnProps = Merge<
+  HTMLChakraProps<"button">,
+  HTMLMotionProps<"button">
+>;

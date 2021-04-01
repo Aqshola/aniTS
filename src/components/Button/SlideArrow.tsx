@@ -11,11 +11,13 @@ export default function SlideArrow(props: {
         left={props.typeArrow === "left" ? "0" : "unset"}
         right={props.typeArrow === "right" ? "0" : "unset"}
         top="20"
-        w="max"
+        w="min"
+        p="2"
+        rounded="full"
         zIndex="1"
         display={["none", "none", "flex"]}
         onClick={props.onClick}
-        border="1px solid black"
+        colorScheme="facebook"
       >
         {props.typeArrow === "left" && (
           <svg

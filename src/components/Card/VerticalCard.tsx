@@ -12,6 +12,7 @@ export default function VerticalCard() {
           transform: "scale(0.9)",
           transition: "0.3s",
         }}
+        mb="10"
       >
         <Box w="100%" h="64" rounded="lg" bgColor="gray.700" overflow="hidden">
           <Image src="assets/tester2.jpg" boxSize="100%" objectFit="cover" />

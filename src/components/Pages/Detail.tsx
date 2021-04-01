@@ -5,7 +5,13 @@ export default function Detail() {
   return (
     <Box display="flex" flexDirection="column" minH="100vh" w="full" mt="5">
       <Box display="flex" flexDirection={["column", "column", "row"]}>
-        <Box display="flex" order={[2, 2, 1]} flexDir="column">
+        <Box
+          display="flex"
+          order={[2, 2, 1]}
+          flexDir="column"
+          w={["full", "full", "50%"]}
+          p={["0", "0", "5"]}
+        >
           <Heading size="lg">Justice League Snyder Cut</Heading>
           <Text>17+ | 2021 | 12 Episode</Text>
           <Box display="flex" alignItems="center" p="0">
@@ -38,8 +44,8 @@ export default function Detail() {
         <Box
           order={[1, 1, 2]}
           display="flex"
-          w={["full", "full", "96"]}
-          h="60"
+          w={["full", "full", "70%"]}
+          h={["60", "96"]}
           rounded="md"
           overflow="hidden"
         >
@@ -55,6 +61,9 @@ export default function Detail() {
           mt="5"
           justifyContent="space-between"
         >
+          <VerticalCard />
+          <VerticalCard />
+          <VerticalCard />
           <VerticalCard />
           <VerticalCard />
           <VerticalCard />

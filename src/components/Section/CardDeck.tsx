@@ -4,15 +4,20 @@ import Slider from "react-slick";
 import VerticalCard from "../Card/VerticalCard";
 import SlideArrow from "../Button/SlideArrow";
 import { MotionBox } from "../Motion/MotionComponent";
+import { todayReleasesType } from "../../Types/fetchDataTypes";
 
-export default function TopRated(props: { title: string }) {
+export default function TopRated(props: {
+  title: string;
+  data: todayReleasesType[];
+}) {
   const settings = {
     speed: 500,
-    slidesToShow: 5,
-    slidesToScroll: 4,
+    slidesToShow: 3,
+    slidesToScroll: 3,
     focusOnSelect: true,
     infinite: false,
     dots: true,
+    initialSlide: 0,
     responsive: [
       {
         breakpoint: 1200,
@@ -20,6 +25,9 @@ export default function TopRated(props: { title: string }) {
           slidesToShow: 3,
           slidesToScroll: 3,
           dots: true,
+          infinite: true,
+          swipeToSlide: true,
+          centerMode: false,
         },
       },
       {
@@ -28,6 +36,7 @@ export default function TopRated(props: { title: string }) {
           slidesToShow: 2,
           slidesToScroll: 2,
           dots: true,
+          infinite: true,
         },
       },
     ],
@@ -49,14 +58,15 @@ export default function TopRated(props: { title: string }) {
 
       <Box position="relative" px={["0", "0", "5"]}>
         <Slider {...settings} ref={setsliderRef}>
-          <VerticalCard />
-          <VerticalCard />
-          <VerticalCard />
-          <VerticalCard />
-          <VerticalCard />
-          <VerticalCard />
-          <VerticalCard />
-          <VerticalCard />
+          {props.data.map((res) => {
+            return (
+              <VerticalCard
+                key={res.mal_id}
+                image={res.image_url}
+                title={res.title}
+              />
+            );
+          })}
         </Slider>
       </Box>
     </MotionBox>

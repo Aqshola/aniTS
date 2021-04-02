@@ -3,7 +3,10 @@ import { Box, Heading, Image, Text } from "@chakra-ui/react";
 import { MotionBox, MotionImage } from "../Motion/MotionComponent";
 import { useHistory } from "react-router-dom";
 
-export default function VerticalCard() {
+export default function VerticalCard(props: {
+  title?: string;
+  image?: string;
+}) {
   const history = useHistory();
 
   const imageMotion = {
@@ -35,13 +38,12 @@ export default function VerticalCard() {
           bgColor="gray.700"
           overflow="hidden"
         >
-          <Image src="assets/tester2.jpg" boxSize="100%" objectFit="cover" />
+          <Image src={props.image} boxSize="100%" objectFit="cover" />
         </MotionBox>
         <Box>
           <Heading as="h1" fontWeight="semibold" size="md" w="full">
-            Justice League SnyderCut
+            {props.title}
           </Heading>
-          <Text>2021 - Action|Fantasy </Text>
         </Box>
       </MotionBox>
       <MotionBox
@@ -73,14 +75,10 @@ export default function VerticalCard() {
           left="0"
         >
           <MotionImage
-            src="assets/tester2.jpg"
+            src={props.image}
             objectFit="cover"
             zIndex="0"
             variants={imageMotion}
-            // _groupHover={{
-            //   transform: "scale(1.3)",
-            //   transition: "all 0.3s",
-            // }}
           />
         </Box>
         <Box
@@ -91,7 +89,7 @@ export default function VerticalCard() {
           backgroundImage=" linear-gradient(
           to bottom,
           rgba(0, 0, 0, 0),
-          rgba(0, 0, 0, 0.3)
+          rgba(0, 0, 0, 0.7)
         );"
           left="0"
           top="0"
@@ -99,11 +97,8 @@ export default function VerticalCard() {
         ></Box>
         <Box zIndex="2">
           <Heading size="xs" textColor="white">
-            Avengers Endgame
+            {props.title}
           </Heading>
-          <Text textColor="white" fontSize="xs">
-            2021 - Action|Fantasy{" "}
-          </Text>
         </Box>
       </MotionBox>
     </>

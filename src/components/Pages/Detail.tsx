@@ -1,9 +1,34 @@
 import { Heading, Text, Box, Image, Icon } from "@chakra-ui/react";
 import VerticalCard from "../Card/VerticalCard";
+import { MotionBox } from "../Motion/MotionComponent";
 
 export default function Detail() {
+  const animateEntrance = {
+    hidden: {
+      opacity: 0,
+      y: 30,
+    },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { ease: "easeInOut" },
+    },
+
+    exit: {
+      y: 30,
+      opacity: 0,
+      transition: { ease: "easeInOut" },
+    },
+  };
   return (
-    <Box display="flex" flexDirection="column" minH="100vh" w="full" mt="5">
+    <MotionBox
+      variants={animateEntrance}
+      display="flex"
+      flexDirection="column"
+      minH="100vh"
+      w="full"
+      mt="5"
+    >
       <Box display="flex" flexDirection={["column", "column", "row"]}>
         <Box
           display="flex"
@@ -69,6 +94,6 @@ export default function Detail() {
           <VerticalCard />
         </Box>
       </Box>
-    </Box>
+    </MotionBox>
   );
 }

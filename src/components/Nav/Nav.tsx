@@ -6,10 +6,17 @@ import {
   InputLeftElement,
   Spacer,
 } from "@chakra-ui/react";
+
+import { Link } from "react-router-dom";
+
 export default function Nav() {
   return (
     <Box display="flex" w="full" py="3" alignItems="center">
-      <Heading size="md">MovieApp</Heading>
+      <Link to="/">
+        <Heading size="md" cursor="pointer">
+          MovieApp
+        </Heading>
+      </Link>
 
       <Spacer />
       <InputGroup w={["40", "max-content"]}>

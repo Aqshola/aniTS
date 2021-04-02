@@ -1,13 +1,19 @@
 import React from "react";
 import { Box, Heading, Image, Text } from "@chakra-ui/react";
-
 import { MotionBox, MotionImage } from "../Motion/MotionComponent";
+import { useHistory } from "react-router-dom";
 
 export default function VerticalCard() {
+  const history = useHistory();
+
   const imageMotion = {
     hover: {
       scale: 1.3,
     },
+  };
+
+  const _handleRoute = () => {
+    history.push("/detail");
   };
 
   return (
@@ -20,6 +26,7 @@ export default function VerticalCard() {
           scale: 0.9,
         }}
         mb="10"
+        onClick={_handleRoute}
       >
         <MotionBox
           w="100%"
@@ -38,6 +45,7 @@ export default function VerticalCard() {
         </Box>
       </MotionBox>
       <MotionBox
+        onClick={_handleRoute}
         initial="rest"
         whileHover="hover"
         whileTap={{

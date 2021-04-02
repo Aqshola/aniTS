@@ -25,25 +25,8 @@ export default function NowShowing() {
     ],
   };
 
-  const item = {
-    hidden: {
-      y: 20,
-      opacity: 0,
-    },
-    visible: {
-      y: 0,
-      opacity: 1,
-    },
-  };
-
   return (
-    <MotionBox
-      marginTop="16"
-      display="flex"
-      w="full"
-      flexDir="column"
-      variants={item}
-    >
+    <MotionBox marginTop="16" display="flex" w="full" flexDir="column">
       <Heading size="lg" mb="7">
         Now Showing
       </Heading>

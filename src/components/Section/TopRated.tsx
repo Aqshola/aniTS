@@ -1,5 +1,5 @@
-import { Box, Heading } from "@chakra-ui/react";
-import { useRef, useState } from "react";
+import { Box, Heading, Spacer } from "@chakra-ui/react";
+import { useState } from "react";
 import Slider from "react-slick";
 import VerticalCard from "../Card/VerticalCard";
 import SlideArrow from "../Button/SlideArrow";
@@ -9,10 +9,10 @@ export default function TopRated(props: { title: string }) {
   const settings = {
     speed: 500,
     slidesToShow: 5,
-    slidesToScroll: 3,
+    slidesToScroll: 4,
     focusOnSelect: true,
     infinite: false,
-    afterChange: (currentSlide: number) => _handleChangeSlide(currentSlide),
+    dots: true,
     responsive: [
       {
         breakpoint: 1200,
@@ -33,29 +33,22 @@ export default function TopRated(props: { title: string }) {
     ],
   };
 
-  const sliderRef = useRef<any>();
-  const [showRightArrow, setshowRightArrow] = useState<boolean>(false);
-  const [showLeftArrow, setshowLeftArrow] = useState<boolean>(false);
-
-  const _handleChangeSlide = (currentSlide: number) => {
-    const leftArrowVisible = currentSlide !== 0;
-    const rightArrowVisible = currentSlide <= 5 - 5;
-    setshowLeftArrow(leftArrowVisible);
-    setshowRightArrow(rightArrowVisible);
-  };
+  // const sliderRef = useRef<any>();
+  const [sliderRef, setsliderRef] = useState<any>();
 
   return (
     <MotionBox display="flex" flexDir="column" mt="10">
       <Box display="flex" alignItems="center" mb="7">
         <Heading size="md">{props.title}</Heading>
+        <Spacer />
+        <Box display="flex" w="20" justifyContent="space-between">
+          <SlideArrow typeArrow="left" onClick={sliderRef?.slickPrev} />
+          <SlideArrow typeArrow="right" onClick={sliderRef?.slickNext} />
+        </Box>
       </Box>
 
       <Box position="relative" px={["0", "0", "5"]}>
-        {showLeftArrow && (
-          <SlideArrow typeArrow="left" onClick={sliderRef.current?.slickPrev} />
-        )}
-
-        <Slider {...settings} ref={sliderRef}>
+        <Slider {...settings} ref={setsliderRef}>
           <VerticalCard />
           <VerticalCard />
           <VerticalCard />
@@ -65,12 +58,6 @@ export default function TopRated(props: { title: string }) {
           <VerticalCard />
           <VerticalCard />
         </Slider>
-        {showRightArrow && (
-          <SlideArrow
-            typeArrow="right"
-            onClick={sliderRef.current?.slickNext}
-          />
-        )}
       </Box>
     </MotionBox>
   );

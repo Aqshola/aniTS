@@ -1,4 +1,3 @@
-import { Box } from "@chakra-ui/react";
 import TopRated from "../Section/TopRated";
 import NowShowing from "../Section/NowShowing";
 import { MotionBox } from "../Motion/MotionComponent";

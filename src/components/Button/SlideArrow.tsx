@@ -1,4 +1,3 @@
-import { Button } from "@chakra-ui/react";
 import { MotionButton } from "../Motion/MotionComponent";
 
 export default function SlideArrow(props: {
@@ -8,20 +7,19 @@ export default function SlideArrow(props: {
   return (
     <>
       <MotionButton
-        position="absolute"
         left={props.typeArrow === "left" ? "0" : "unset"}
         right={props.typeArrow === "right" ? "0" : "unset"}
         top="20"
         w="min"
-        p="2"
+        p="1"
         rounded="full"
         whileTap={{
-          scale: 0.9,
+          scale: 0.7,
+          type: "spring",
         }}
         zIndex="1"
-        display={["none", "none", "flex"]}
+        display="flex"
         onClick={props.onClick}
-        bgColor="blue.200"
         outline="none"
         border="none"
       >

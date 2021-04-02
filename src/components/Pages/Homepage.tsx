@@ -5,28 +5,19 @@ import { getTodayReleases } from "../../utils/getData.js";
 import { useEffect, useState } from "react";
 
 export default function Homepage() {
-  const item = {
-    hidden: {
-      opacity: 0,
-      y: 30,
-    },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { ease: "easeInOut" },
-    },
-
-    exit: {
-      y: 30,
-      opacity: 0,
-      transition: { ease: "easeInOut" },
-    },
-  };
-
   async function getData() {
     let todayRel = await getTodayReleases();
     settodayRelease(todayRel);
   }
+
+  const item = {
+    hidden: {
+      opacity: 0,
+    },
+    visible: {
+      opacity: 1,
+    },
+  };
 
   useEffect(() => {
     getData();
@@ -44,6 +35,7 @@ export default function Homepage() {
         variants={item}
       >
         <NowShowing />
+
         <CardDeck title="Today Releases" data={todayRelease} />
         {/* <CardDeck title="Top Airing" />
         <CardDeck title="Top Upcoming" /> */}

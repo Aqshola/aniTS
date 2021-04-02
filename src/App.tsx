@@ -19,8 +19,8 @@ function App() {
           <AnimatePresence>
             <Switch>
               <Route exact path="/" component={Homepage} />
-              {/* <Route exact path="/detail" component={Detail} />
-              <Route exact path="/result/:name" component={Result} /> */}
+              <Route exact path="/detail" component={Detail} />
+              <Route exact path="/result/:name" component={Result} />
             </Switch>
           </AnimatePresence>
         </Router>

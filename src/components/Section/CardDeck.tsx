@@ -12,8 +12,8 @@ export default function TopRated(props: {
 }) {
   const settings = {
     speed: 500,
-    slidesToShow: 3,
-    slidesToScroll: 3,
+    slidesToShow: 5,
+    slidesToScroll: 4,
     focusOnSelect: true,
     infinite: false,
     dots: true,
@@ -26,8 +26,6 @@ export default function TopRated(props: {
           slidesToScroll: 3,
           dots: true,
           infinite: true,
-          swipeToSlide: true,
-          centerMode: false,
         },
       },
       {
@@ -42,7 +40,6 @@ export default function TopRated(props: {
     ],
   };
 
-  // const sliderRef = useRef<any>();
   const [sliderRef, setsliderRef] = useState<any>();
 
   return (

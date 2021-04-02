@@ -7,6 +7,7 @@ import { MotionBox } from "./components/Motion/MotionComponent";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
 import ScrolltoTop from "./components/ScrollTop/ScrollToTop";
+import Result from "./components/Pages/Result";
 
 function App() {
   return (
@@ -18,8 +19,8 @@ function App() {
           <AnimatePresence>
             <Switch>
               <Route exact path="/" component={Homepage} />
-
               <Route exact path="/detail" component={Detail} />
+              <Route exact path="/result/:name" component={Result} />
             </Switch>
           </AnimatePresence>
         </Router>

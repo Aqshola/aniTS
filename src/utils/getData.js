@@ -42,3 +42,13 @@ export const getNowShowing = async () => {
 
   return parsedArray;
 };
+
+export const getTopCategory = async (category) => {
+  const data = await fetch(`https://api.jikan.moe/v3/top/anime/1/${category}`);
+  const parsedData = await data.json();
+
+  if (!data.ok) {
+    throw new Error(data.statusText);
+  }
+  return parsedData.top;
+};

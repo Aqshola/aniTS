@@ -1,9 +1,13 @@
-import { Box, Heading } from "@chakra-ui/react";
-import { useRef, useState } from "react";
+import { Box, Heading, Spacer, Skeleton } from "@chakra-ui/react";
+import { useEffect, useState } from "react";
 import Slider from "react-slick";
 import SlideArrow from "../Button/SlideArrow";
 import VerticalCard from "../Card/VerticalCard";
 import LinkButton from "../Button/LinkButton";
+import { getTopCategory } from "../../utils/getData";
+import { todayReleasesType } from "../../Types/fetchDataTypes";
+
+type topTypes = "airing" | "upcoming";
 
 export default function BrowseCategory() {
   const settings = {
@@ -11,14 +15,13 @@ export default function BrowseCategory() {
     slidesToShow: 5,
     slidesToScroll: 3,
     focusOnSelect: true,
-    afterChange: (currentSlide: number) => _handleChangeSlide(currentSlide),
+
     responsive: [
       {
         breakpoint: 1200,
         settings: {
           slidesToShow: 3,
           slidesToScroll: 3,
-          dots: true,
         },
       },
       {
@@ -26,63 +29,85 @@ export default function BrowseCategory() {
         settings: {
           slidesToShow: 2,
           slidesToScroll: 2,
-          dots: true,
         },
       },
     ],
   };
 
-  const sliderRef = useRef<any>();
-  const [showRightArrow, setshowRightArrow] = useState<boolean>(false);
-  const [showLeftArrow, setshowLeftArrow] = useState<boolean>(false);
+  const [sliderRef, setsliderRef] = useState<any>();
+  const [topCategory, settopCategory] = useState<topTypes>("airing");
+  const [dataTop, setdataTop] = useState<todayReleasesType[]>([]);
+  const [loading, setloading] = useState<boolean>(true);
 
-  const _handleChangeSlide = (currentSlide: number) => {
-    const leftArrowVisible = currentSlide !== 0;
-    const rightArrowVisible = currentSlide <= 5 - 5;
-    setshowLeftArrow(leftArrowVisible);
-    setshowRightArrow(rightArrowVisible);
+  const _changeTop = (e: any) => {
+    setloading(true);
+    settopCategory(e.target.name);
   };
 
+  useEffect(() => {
+    const fetching = async () => {
+      const result = await getTopCategory(topCategory);
+      setdataTop(result);
+      setloading(false);
+    };
+    fetching();
+  }, [settopCategory, topCategory]);
+
   return (
-    <Box display="flex" flexDir="column">
-      <Heading size="md" mb="7">
-        Browse by Category
-      </Heading>
+    <Box display="flex" flexDir="column" mt="12">
+      <Box display="flex">
+        <Heading size="md" mb="7">
+          Top Anime
+        </Heading>
+        <Spacer />
+        <Box display="flex" w="20" justifyContent="space-between">
+          <SlideArrow typeArrow="left" onClick={sliderRef?.slickPrev} />
+          <SlideArrow typeArrow="right" onClick={sliderRef?.slickNext} />
+        </Box>
+      </Box>
       <Box
-        px={["0", "5"]}
         mb="5"
-        w="96"
+        w={["52", "52", "72"]}
+        px={["0", "0", "5"]}
         display="flex"
         justifyContent="space-between"
       >
-        <LinkButton variant="outline">Action</LinkButton>
-
-        <LinkButton variant="outline">Adventure</LinkButton>
-        <LinkButton variant="outline">Slice of life</LinkButton>
-        <LinkButton variant="ghost" fontWeight="bold" ml="3">
-          See All
+        <LinkButton
+          variant="outline"
+          isActive={topCategory === "airing" ? true : false}
+          name="airing"
+          onClick={_changeTop}
+        >
+          Top Airing
+        </LinkButton>
+        <LinkButton
+          variant="outline"
+          isActive={topCategory === "upcoming" ? true : false}
+          name="upcoming"
+          onClick={_changeTop}
+        >
+          Top Upcoming
         </LinkButton>
       </Box>
-      <Box position="relative" px={["0", "0", "5"]} w="full">
-        {showLeftArrow && (
-          <SlideArrow typeArrow="left" onClick={sliderRef.current?.slickPrev} />
-        )}
 
-        <Slider {...settings} ref={sliderRef}>
-          <VerticalCard />
-          <VerticalCard />
-          <VerticalCard />
-          <VerticalCard />
-          <VerticalCard />
-        </Slider>
-
-        {showRightArrow && (
-          <SlideArrow
-            typeArrow="right"
-            onClick={sliderRef.current?.slickNext}
-          />
-        )}
-      </Box>
+      <Skeleton
+        minH={["40vh", "40vh", "50vh"]}
+        display="block"
+        w="full"
+        isLoaded={dataTop.length > 0 && !loading}
+      >
+        <Box position="relative" px={["0", "0", "5"]} w="full">
+          <Slider {...settings} ref={setsliderRef}>
+            {dataTop.map((res) => (
+              <VerticalCard
+                key={res.mal_id}
+                title={res.title}
+                image={res.image_url}
+              />
+            ))}
+          </Slider>
+        </Box>
+      </Skeleton>
     </Box>
   );
 }

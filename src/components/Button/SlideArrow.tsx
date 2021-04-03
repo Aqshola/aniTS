@@ -15,7 +15,9 @@ export default function SlideArrow(props: {
         rounded="full"
         whileTap={{
           scale: 0.7,
-          type: "spring",
+          transition: {
+            type: "spring",
+          },
         }}
         zIndex="1"
         display="flex"

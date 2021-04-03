@@ -3,6 +3,7 @@ import NowShowing from "../Section/NowShowing";
 import { MotionBox } from "../Motion/MotionComponent";
 import { getNowShowing, getTodayReleases } from "../../utils/getData.js";
 import { useEffect, useState } from "react";
+import BrowseCategory from "../Section/BrowseCategory";
 
 export default function Homepage() {
   async function getData() {
@@ -41,8 +42,7 @@ export default function Homepage() {
         <NowShowing data={nowShowing} />
 
         <CardDeck title="Today Releases" data={todayRelease} />
-        {/* <CardDeck title="Top Airing" />
-        <CardDeck title="Top Upcoming" /> */}
+        <BrowseCategory />
       </MotionBox>
     </>
   );

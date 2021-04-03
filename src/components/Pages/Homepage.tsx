@@ -1,13 +1,16 @@
 import CardDeck from "../Section/CardDeck";
 import NowShowing from "../Section/NowShowing";
 import { MotionBox } from "../Motion/MotionComponent";
-import { getTodayReleases } from "../../utils/getData.js";
+import { getNowShowing, getTodayReleases } from "../../utils/getData.js";
 import { useEffect, useState } from "react";
 
 export default function Homepage() {
   async function getData() {
     let todayRel = await getTodayReleases();
+    let nowShow = await getNowShowing();
+
     settodayRelease(todayRel);
+    setnowShowing(nowShow);
   }
 
   const item = {
@@ -24,6 +27,7 @@ export default function Homepage() {
   }, []);
 
   const [todayRelease, settodayRelease] = useState([]);
+  const [nowShowing, setnowShowing] = useState<any>([]);
 
   return (
     <>
@@ -34,7 +38,7 @@ export default function Homepage() {
         flexDir="column"
         variants={item}
       >
-        <NowShowing />
+        <NowShowing data={nowShowing} />
 
         <CardDeck title="Today Releases" data={todayRelease} />
         {/* <CardDeck title="Top Airing" />

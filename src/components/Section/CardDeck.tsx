@@ -43,7 +43,7 @@ export default function TopRated(props: {
   const [sliderRef, setsliderRef] = useState<any>();
 
   return (
-    <MotionBox display="flex" flexDir="column" mt="10">
+    <MotionBox display="flex" flexDir="column" mt={["5", "5", "10"]}>
       <Box display="flex" alignItems="center" mb="7">
         <Heading size="md">{props.title}</Heading>
         <Spacer />

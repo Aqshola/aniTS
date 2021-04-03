@@ -13,4 +13,8 @@ export interface todayReleasesType {
   score: number;
   mal_id: number;
   image_url: string;
+  members: number;
+  sore: number | null;
+  airing_start(): Date;
+  type: string;
 }

@@ -3,8 +3,9 @@ import Slider from "react-slick";
 import { Box, Heading } from "@chakra-ui/react";
 import HorizontalCard from "../Card/HorizontalCard";
 import { MotionBox } from "../Motion/MotionComponent";
+import { todayReleasesType } from "../../Types/fetchDataTypes";
 
-export default function NowShowing() {
+export default function NowShowing(props: { data: todayReleasesType[] }) {
   const settings = {
     infinite: true,
     speed: 500,
@@ -26,17 +27,30 @@ export default function NowShowing() {
   };
 
   return (
-    <MotionBox marginTop="16" display="flex" w="full" flexDir="column">
+    <MotionBox marginTop="10" display="flex" w="full" flexDir="column">
       <Heading size="lg" mb="7">
         Now Showing
       </Heading>
       <Box position="relative">
         <Box paddingX={["0", "0", "3"]}>
           <Slider {...settings} className="relative">
-            <HorizontalCard title="Shazam" />
-            <HorizontalCard title="Captain Thunder" />
-            <HorizontalCard title="LOTR" />
-            <HorizontalCard title="Lalatina" />
+            {props.data
+              .sort((a, b) => {
+                if (a.airing_start < b.airing_start) {
+                  return 1;
+                }
+
+                return 0;
+              })
+              .map((res) => {
+                return (
+                  <HorizontalCard
+                    title={res.title}
+                    key={res.mal_id}
+                    image={res.image_url}
+                  />
+                );
+              })}
           </Slider>
         </Box>
       </Box>

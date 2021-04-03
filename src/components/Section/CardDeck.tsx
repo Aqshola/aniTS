@@ -1,4 +1,4 @@
-import { Box, Heading, Spacer } from "@chakra-ui/react";
+import { Box, Heading, Spacer, Skeleton } from "@chakra-ui/react";
 import { useState } from "react";
 import Slider from "react-slick";
 import VerticalCard from "../Card/VerticalCard";
@@ -18,6 +18,7 @@ export default function TopRated(props: {
     infinite: false,
     dots: true,
     initialSlide: 0,
+
     responsive: [
       {
         breakpoint: 1200,
@@ -43,7 +44,7 @@ export default function TopRated(props: {
   const [sliderRef, setsliderRef] = useState<any>();
 
   return (
-    <MotionBox display="flex" flexDir="column" mt={["5", "5", "10"]}>
+    <MotionBox display="flex" flexDir="column" mt={["5", "5", "0"]}>
       <Box display="flex" alignItems="center" mb="7">
         <Heading size="md">{props.title}</Heading>
         <Spacer />
@@ -53,19 +54,25 @@ export default function TopRated(props: {
         </Box>
       </Box>
 
-      <Box position="relative" px={["0", "0", "5"]}>
-        <Slider {...settings} ref={setsliderRef}>
-          {props.data.map((res) => {
-            return (
-              <VerticalCard
-                key={res.mal_id}
-                image={res.image_url}
-                title={res.title}
-              />
-            );
-          })}
-        </Slider>
-      </Box>
+      <Skeleton
+        minH="30vh"
+        display="block"
+        isLoaded={props.data.length === 0 ? false : true}
+      >
+        <Box position="relative" px={["0", "0", "5"]}>
+          <Slider {...settings} ref={setsliderRef}>
+            {props.data.map((res) => {
+              return (
+                <VerticalCard
+                  key={res.mal_id}
+                  image={res.image_url}
+                  title={res.title}
+                />
+              );
+            })}
+          </Slider>
+        </Box>
+      </Skeleton>
     </MotionBox>
   );
 }

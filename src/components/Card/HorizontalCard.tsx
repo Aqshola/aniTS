@@ -19,12 +19,12 @@ export default function HorizontalCard(props: Props) {
     <>
       <Box
         w="96"
-        h="72"
+        h="80"
         display={["none", "none", "flex"]}
         flexDirection="column"
         rounded="lg"
       >
-        <Box w="full" h="full" display="flex" rounded="md" overflow="hidden">
+        <Box w="full" h="80%" display="flex" rounded="md" overflow="hidden">
           <Image
             src={props.image}
             objectFit="cover"
@@ -32,7 +32,7 @@ export default function HorizontalCard(props: Props) {
             filter="blur(0.1px)"
           />
         </Box>
-        <Box w="full" padding="2">
+        <Box w="full" padding="2" minH="20%">
           <Flex alignItems="center">
             <Heading fontWeight="bold" size="md">
               {props.title}

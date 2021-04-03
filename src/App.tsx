@@ -11,7 +11,7 @@ import Result from "./components/Pages/Result";
 
 function App() {
   return (
-    <Container maxW="container.xl" margin="auto" padding="5">
+    <Container maxW="container.xl" margin="auto" padding="5" overflow="hidden">
       <MotionBox initial="hidden" animate="visible">
         <Router>
           <ScrolltoTop />

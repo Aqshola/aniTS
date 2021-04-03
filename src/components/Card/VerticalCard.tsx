@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Heading, Image, Text } from "@chakra-ui/react";
+import { Box, Heading, Image } from "@chakra-ui/react";
 import { MotionBox, MotionImage } from "../Motion/MotionComponent";
 import { useHistory } from "react-router-dom";
 

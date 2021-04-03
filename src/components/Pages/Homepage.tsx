@@ -1,19 +1,9 @@
-import CardDeck from "../Section/CardDeck";
+import CardDeck from "../Section/TodayAiring";
 import NowShowing from "../Section/NowShowing";
 import { MotionBox } from "../Motion/MotionComponent";
-import { getNowShowing, getTodayReleases } from "../../utils/getData.js";
-import { useEffect, useState } from "react";
-import BrowseCategory from "../Section/BrowseCategory";
+import BrowseCategory from "../Section/TopCategory";
 
 export default function Homepage() {
-  async function getData() {
-    let todayRel = await getTodayReleases();
-    let nowShow = await getNowShowing();
-
-    settodayRelease(todayRel);
-    setnowShowing(nowShow);
-  }
-
   const item = {
     hidden: {
       opacity: 0,
@@ -22,13 +12,6 @@ export default function Homepage() {
       opacity: 1,
     },
   };
-
-  useEffect(() => {
-    getData();
-  }, []);
-
-  const [todayRelease, settodayRelease] = useState([]);
-  const [nowShowing, setnowShowing] = useState<any>([]);
 
   return (
     <>
@@ -39,9 +22,8 @@ export default function Homepage() {
         flexDir="column"
         variants={item}
       >
-        <NowShowing data={nowShowing} />
-
-        <CardDeck title="Today Releases" data={todayRelease} />
+        <NowShowing />
+        <CardDeck />
         <BrowseCategory />
       </MotionBox>
     </>

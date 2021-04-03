@@ -1,11 +1,13 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Slider from "react-slick";
 import { Box, Heading, Skeleton } from "@chakra-ui/react";
 import HorizontalCard from "../Card/HorizontalCard";
 import { MotionBox } from "../Motion/MotionComponent";
 import { todayReleasesType } from "../../Types/fetchDataTypes";
+import { getNowShowing } from "../../utils/getData.js";
 
-export default function NowShowing(props: { data: todayReleasesType[] }) {
+export default function NowShowing() {
+  const [nowShow, setnowShow] = useState<todayReleasesType[]>([]);
   const settings = {
     infinite: true,
     speed: 500,
@@ -26,6 +28,15 @@ export default function NowShowing(props: { data: todayReleasesType[] }) {
     ],
   };
 
+  useEffect(() => {
+    const fetching = async () => {
+      const res = await getNowShowing();
+      setnowShow(res);
+    };
+
+    fetching();
+  }, []);
+
   return (
     <MotionBox marginTop="10" display="flex" w="full" flexDir="column">
       <Heading size="lg" mb="7">
@@ -35,12 +46,12 @@ export default function NowShowing(props: { data: todayReleasesType[] }) {
         minH={["40vh", "40vh", "50vh"]}
         display="block"
         w="full"
-        isLoaded={props.data.length === 0 ? false : true}
+        isLoaded={nowShow.length === 0 ? false : true}
       >
         <Box position="relative">
           <Box paddingX={["0", "0", "3"]}>
             <Slider {...settings} className="relative" lazyLoad="ondemand">
-              {props.data
+              {nowShow
                 .sort((a, b) => {
                   if (a.airing_start < b.airing_start) {
                     return 1;

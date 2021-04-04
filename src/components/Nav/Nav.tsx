@@ -6,10 +6,24 @@ import {
   InputLeftElement,
   Spacer,
 } from "@chakra-ui/react";
-
-import { Link } from "react-router-dom";
+import { useState } from "react";
+import { Link, useHistory } from "react-router-dom";
 
 export default function Nav() {
+  const history = useHistory();
+  const _handleChange = (e: any) => {
+    setkeyboardValue(e.target.value);
+  };
+
+  const _handleRoute = (e: any) => {
+    if (e.key === "Enter") {
+      history.push("/result/" + keyboardValue);
+      setkeyboardValue("");
+    }
+  };
+
+  const [keyboardValue, setkeyboardValue] = useState<string>("");
+
   return (
     <Box display="flex" w="full" py="3" alignItems="center">
       <Link to="/">
@@ -38,7 +52,12 @@ export default function Nav() {
             </svg>
           }
         />
-        <Input placeholder="Search Anime" />
+        <Input
+          placeholder="Search Anime"
+          onChange={_handleChange}
+          onKeyPress={_handleRoute}
+          value={keyboardValue}
+        />
       </InputGroup>
     </Box>
   );

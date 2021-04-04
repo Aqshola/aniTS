@@ -2,6 +2,9 @@ import { Heading, Box } from "@chakra-ui/react";
 import { MotionBox } from "../Motion/MotionComponent";
 import { useParams } from "react-router-dom";
 import VerticalCard from "../Card/VerticalCard";
+import { useEffect, useState } from "react";
+import { getSearchAnime } from "../../utils/getData";
+import { todayReleasesType } from "../../Types/fetchDataTypes";
 
 interface RouteInfo {
   name: string;
@@ -27,10 +30,21 @@ export default function Result() {
     },
   };
 
+  useEffect(() => {
+    const fetching = async () => {
+      const res = await getSearchAnime(name);
+      setsearchData(res);
+    };
+
+    fetching();
+  }, [name]);
+
+  const [searchData, setsearchData] = useState<todayReleasesType[]>([]);
+
   return (
     <MotionBox minH="100vh" p="5" variants={animateEntrance}>
       <Heading textAlign="center" fontWeight="normal">
-        Found 5 result <br></br>for "{name}"
+        Found {searchData.length} result <br></br>for "{name}"
       </Heading>
       <Box
         mt="10"
@@ -39,7 +53,14 @@ export default function Result() {
         justifyContent="space-between"
         flexWrap="wrap"
       >
-        {/* <VerticalCard /> */}
+        {searchData.map((data) => (
+          <VerticalCard
+            title={data.title}
+            image={data.image_url}
+            key={data.mal_id}
+            id={data.mal_id}
+          />
+        ))}
       </Box>
     </MotionBox>
   );

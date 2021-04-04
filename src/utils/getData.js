@@ -74,3 +74,13 @@ export const getRecomend = async (id) => {
   }
   return parsedData.recommendations;
 };
+
+export const getSearchAnime = async (name) => {
+  const data = await fetch(`https://api.jikan.moe/v3/search/anime?q=${name}`);
+  const parsedData = await data.json();
+
+  if (!data.ok) {
+    throw new Error(data.statusText);
+  }
+  return parsedData.results;
+};

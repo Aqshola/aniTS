@@ -6,6 +6,7 @@ import { useHistory } from "react-router-dom";
 export default function VerticalCard(props: {
   title?: string;
   image?: string;
+  id: number;
 }) {
   const history = useHistory();
 
@@ -16,7 +17,7 @@ export default function VerticalCard(props: {
   };
 
   const _handleRoute = () => {
-    history.push("/detail");
+    history.push(`/detail/${props.id}`);
   };
 
   return (

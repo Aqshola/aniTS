@@ -103,6 +103,7 @@ export default function BrowseCategory() {
                 key={res.mal_id}
                 title={res.title}
                 image={res.image_url}
+                id={res.mal_id}
               />
             ))}
           </Slider>

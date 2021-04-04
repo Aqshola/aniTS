@@ -39,7 +39,7 @@ export default function Result() {
         justifyContent="space-between"
         flexWrap="wrap"
       >
-        <VerticalCard />
+        {/* <VerticalCard /> */}
       </Box>
     </MotionBox>
   );

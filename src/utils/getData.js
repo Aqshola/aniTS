@@ -52,3 +52,25 @@ export const getTopCategory = async (category) => {
   }
   return parsedData.top;
 };
+
+export const getDetailAnime = async (id) => {
+  const data = await fetch(`https://api.jikan.moe/v3/anime/${id}`);
+  const parsedData = await data.json();
+  if (!data.ok) {
+    throw new Error(data.statusText);
+  }
+
+  return parsedData;
+};
+
+export const getRecomend = async (id) => {
+  const data = await fetch(
+    `https://api.jikan.moe/v3/anime/${id}/recommendations`
+  );
+  const parsedData = await data.json();
+
+  if (!data.ok) {
+    throw new Error(data.statusText);
+  }
+  return parsedData.recommendations;
+};

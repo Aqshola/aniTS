@@ -68,6 +68,7 @@ export default function TodayAiring() {
                   key={res.mal_id}
                   image={res.image_url}
                   title={res.title}
+                  id={res.mal_id}
                 />
               );
             })}

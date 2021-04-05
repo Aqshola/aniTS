@@ -1,4 +1,4 @@
-import { Box, Heading, Spacer, Skeleton } from "@chakra-ui/react";
+import { Box, Heading, Spacer } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import Slider from "react-slick";
 import VerticalCard from "../Card/VerticalCard";

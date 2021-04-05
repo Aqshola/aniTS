@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Slider from "react-slick";
-import { Box, Heading, Skeleton } from "@chakra-ui/react";
+import { Box, Heading } from "@chakra-ui/react";
 import HorizontalCard from "../Card/HorizontalCard";
 import { MotionBox } from "../Motion/MotionComponent";
 import { todayReleasesType } from "../../Types/fetchDataTypes";

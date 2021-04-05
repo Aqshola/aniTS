@@ -55,26 +55,26 @@ export default function TodayAiring() {
         </Box>
       </Box>
 
-      <Skeleton
+      {/* <Skeleton
         minH="30vh"
         display="block"
         isLoaded={dataAiring.length === 0 ? false : true}
-      >
-        <Box position="relative" px={["0", "0", "5"]}>
-          <Slider {...settings} ref={setsliderRef}>
-            {dataAiring.map((res) => {
-              return (
-                <VerticalCard
-                  key={res.mal_id}
-                  image={res.image_url}
-                  title={res.title}
-                  id={res.mal_id}
-                />
-              );
-            })}
-          </Slider>
-        </Box>
-      </Skeleton>
+      > */}
+      <Box position="relative" px={["0", "0", "5"]}>
+        <Slider {...settings} ref={setsliderRef}>
+          {dataAiring.map((res) => {
+            return (
+              <VerticalCard
+                key={res.mal_id}
+                image={res.image_url}
+                title={res.title}
+                id={res.mal_id}
+              />
+            );
+          })}
+        </Slider>
+      </Box>
+      {/* </Skeleton> */}
     </MotionBox>
   );
 }

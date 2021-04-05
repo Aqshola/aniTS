@@ -89,26 +89,26 @@ export default function TopCategory() {
           Top Upcoming
         </LinkButton>
       </Box>
-
+      {/* 
       <Skeleton
         minH={["40vh", "40vh", "50vh"]}
         display="block"
         w="full"
         isLoaded={dataTop.length > 0 && !loading}
-      >
-        <Box position="relative" px={["0", "0", "5"]} w="full">
-          <Slider {...settings} ref={setsliderRef}>
-            {dataTop.map((res) => (
-              <VerticalCard
-                key={res.mal_id}
-                title={res.title}
-                image={res.image_url}
-                id={res.mal_id}
-              />
-            ))}
-          </Slider>
-        </Box>
-      </Skeleton>
+      > */}
+      <Box position="relative" px={["0", "0", "5"]} w="full">
+        <Slider {...settings} ref={setsliderRef}>
+          {dataTop.map((res) => (
+            <VerticalCard
+              key={res.mal_id}
+              title={res.title}
+              image={res.image_url}
+              id={res.mal_id}
+            />
+          ))}
+        </Slider>
+      </Box>
+      {/* </Skeleton> */}
     </Box>
   );
 }

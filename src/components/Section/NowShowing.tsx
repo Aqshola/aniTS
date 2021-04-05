@@ -42,37 +42,37 @@ export default function NowShowing() {
       <Heading size="lg" mb="7">
         Now Showing
       </Heading>
-      <Skeleton
+      {/* <Skeleton
         minH={["40vh", "40vh", "50vh"]}
         display="block"
         w="full"
         isLoaded={nowShow.length === 0 ? false : true}
-      >
-        <Box position="relative">
-          <Box paddingX={["0", "0", "3"]}>
-            <Slider {...settings} className="relative" lazyLoad="ondemand">
-              {nowShow
-                .sort((a, b) => {
-                  if (a.airing_start < b.airing_start) {
-                    return 1;
-                  }
+      > */}
+      <Box position="relative">
+        <Box paddingX={["0", "0", "3"]}>
+          <Slider {...settings} className="relative" lazyLoad="ondemand">
+            {nowShow
+              .sort((a, b) => {
+                if (a.airing_start < b.airing_start) {
+                  return 1;
+                }
 
-                  return 0;
-                })
-                .map((res) => {
-                  return (
-                    <HorizontalCard
-                      title={res.title}
-                      key={res.mal_id}
-                      image={res.image_url}
-                      id={res.mal_id}
-                    />
-                  );
-                })}
-            </Slider>
-          </Box>
+                return 0;
+              })
+              .map((res) => {
+                return (
+                  <HorizontalCard
+                    title={res.title}
+                    key={res.mal_id}
+                    image={res.image_url}
+                    id={res.mal_id}
+                  />
+                );
+              })}
+          </Slider>
         </Box>
-      </Skeleton>
+      </Box>
+      {/* </Skeleton> */}
     </MotionBox>
   );
 }

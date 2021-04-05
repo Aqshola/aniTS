@@ -5,7 +5,7 @@ import { MotionBox } from "../Motion/MotionComponent";
 import {} from "module";
 import { useEffect, useState } from "react";
 import { getDetailAnime, getRecomend } from "../../utils/getData";
-import { details, Recom, todayReleasesType } from "../../Types/fetchDataTypes";
+import { details, Recom } from "../../Types/fetchDataTypes";
 
 interface route {
   id: string;
@@ -96,19 +96,23 @@ export default function Detail() {
           </Text>
         </Box>
         <Box
+          alignItems="center"
+          justifyContent="center"
           order={[1, 1, 2]}
           display="flex"
-          w={["44", "full", "auto"]}
-          h={["60", "96"]}
+          w={["44", "full", "50%"]}
+          h={"auto"}
           rounded="md"
           overflow="hidden"
         >
-          <Image
-            src={detail?.image_url}
-            objectFit="cover"
-            objectPosition={["top", "top", "center"]}
-            boxSize="100%"
-          />
+          <Box>
+            <Image
+              src={detail?.image_url}
+              objectFit="cover"
+              objectPosition={["top", "top", "center"]}
+              boxSize="100%"
+            />
+          </Box>
         </Box>
       </Box>
       <Box mt="10">

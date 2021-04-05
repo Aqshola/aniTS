@@ -5,6 +5,7 @@ import VerticalCard from "../Card/VerticalCard";
 import { useEffect, useState } from "react";
 import { getSearchAnime } from "../../utils/getData";
 import { todayReleasesType } from "../../Types/fetchDataTypes";
+import { Helmet } from "react-helmet";
 
 interface RouteInfo {
   name: string;
@@ -46,28 +47,36 @@ export default function Result() {
   const [searchData, setsearchData] = useState<todayReleasesType[]>([]);
 
   return (
-    <MotionBox minH="100vh" p="5" variants={animateEntrance}>
-      <Heading textAlign="center" fontWeight="normal">
-        Found {loading ? "?" : searchData.length} result <br></br>for "{name}"
-      </Heading>
-      <Skeleton isLoaded={!loading} minH="64" minW="96">
-        <Box
-          mt="10"
-          display="flex"
-          w="full"
-          justifyContent="space-between"
-          flexWrap="wrap"
-        >
-          {searchData.map((data) => (
-            <VerticalCard
-              title={data.title}
-              image={data.image_url}
-              key={data.mal_id}
-              id={data.mal_id}
-            />
-          ))}
-        </Box>
-      </Skeleton>
-    </MotionBox>
+    <>
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>AniTS - result {`${name}`}</title>
+
+        <meta name="description" content={`Search Result for ${name}`} />
+      </Helmet>
+      <MotionBox minH="100vh" p="5" variants={animateEntrance}>
+        <Heading textAlign="center" fontWeight="normal">
+          Found {loading ? "?" : searchData.length} result <br></br>for "{name}"
+        </Heading>
+        <Skeleton isLoaded={!loading} minH="64" minW="96">
+          <Box
+            mt="10"
+            display="flex"
+            w="full"
+            justifyContent="space-between"
+            flexWrap="wrap"
+          >
+            {searchData.map((data) => (
+              <VerticalCard
+                title={data.title}
+                image={data.image_url}
+                key={data.mal_id}
+                id={data.mal_id}
+              />
+            ))}
+          </Box>
+        </Skeleton>
+      </MotionBox>
+    </>
   );
 }

@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 import VerticalCard from "../Card/VerticalCard";
 import { useEffect, useState } from "react";
 import { getSearchAnime } from "../../utils/getData";
-import { todayReleasesType } from "../../Types/fetchDataTypes";
+import { mainAnimeType } from "../../Types/fetchDataTypes";
 import { Helmet } from "react-helmet";
 
 interface RouteInfo {
@@ -44,7 +44,7 @@ export default function Result() {
     fetching();
   }, [name]);
 
-  const [searchData, setsearchData] = useState<todayReleasesType[]>([]);
+  const [searchData, setsearchData] = useState<mainAnimeType[]>([]);
 
   return (
     <>

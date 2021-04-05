@@ -3,11 +3,11 @@ import Slider from "react-slick";
 import { Box, Heading } from "@chakra-ui/react";
 import HorizontalCard from "../Card/HorizontalCard";
 import { MotionBox } from "../Motion/MotionComponent";
-import { todayReleasesType } from "../../Types/fetchDataTypes";
+import { mainAnimeType } from "../../Types/fetchDataTypes";
 import { getNowShowing } from "../../utils/getData.js";
 
 export default function NowShowing() {
-  const [nowShow, setnowShow] = useState<todayReleasesType[]>([]);
+  const [nowShow, setnowShow] = useState<mainAnimeType[]>([]);
   const settings = {
     infinite: true,
     speed: 500,

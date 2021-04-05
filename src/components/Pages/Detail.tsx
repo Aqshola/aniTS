@@ -12,7 +12,7 @@ import VerticalCard from "../Card/VerticalCard";
 import { MotionBox } from "../Motion/MotionComponent";
 import { useEffect, useState } from "react";
 import { getDetailAnime, getRecomend } from "../../utils/getData";
-import { details, Recom } from "../../Types/fetchDataTypes";
+import { details, mainAnimeType } from "../../Types/fetchDataTypes";
 import { Helmet } from "react-helmet";
 
 interface route {
@@ -41,7 +41,7 @@ export default function Detail() {
   };
 
   const [detail, setdetail] = useState<details>();
-  const [recomen, setrecomen] = useState<Recom[]>();
+  const [recomen, setrecomen] = useState<mainAnimeType[]>();
 
   useEffect(() => {
     const fetching = async () => {

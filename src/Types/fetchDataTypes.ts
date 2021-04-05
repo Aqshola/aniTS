@@ -8,16 +8,15 @@ export async function fetchData<T>(request: RequestInfo): Promise<T> {
   return body;
 }
 
-export interface todayReleasesType {
+export interface mainAnimeType {
   title: string;
   mal_id: number;
   image_url: string;
-  members: number;
   airing_start(): Date;
   type: string;
 }
 
-export interface details extends todayReleasesType {
+export interface details extends mainAnimeType {
   synopsis: string;
   episodes?: number;
   score?: number;
@@ -36,10 +35,5 @@ export interface details extends todayReleasesType {
   };
   premiered?: string;
   genres: { name: string }[];
-}
-
-export interface Recom {
-  title: string;
-  image_url: string;
-  mal_id: number;
+  members: number;
 }

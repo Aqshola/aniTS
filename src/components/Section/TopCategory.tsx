@@ -5,7 +5,7 @@ import SlideArrow from "../Button/SlideArrow";
 import VerticalCard from "../Card/VerticalCard";
 import LinkButton from "../Button/LinkButton";
 import { getTopCategory } from "../../utils/getData";
-import { todayReleasesType } from "../../Types/fetchDataTypes";
+import { mainAnimeType } from "../../Types/fetchDataTypes";
 
 type topTypes = "airing" | "upcoming";
 
@@ -36,7 +36,7 @@ export default function TopCategory() {
 
   const [sliderRef, setsliderRef] = useState<any>();
   const [topCategory, settopCategory] = useState<topTypes>("airing");
-  const [dataTop, setdataTop] = useState<todayReleasesType[]>([]);
+  const [dataTop, setdataTop] = useState<mainAnimeType[]>([]);
 
   const _changeTop = (e: any) => {
     settopCategory(e.target.name);

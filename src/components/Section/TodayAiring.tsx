@@ -4,7 +4,7 @@ import Slider from "react-slick";
 import VerticalCard from "../Card/VerticalCard";
 import SlideArrow from "../Button/SlideArrow";
 import { MotionBox } from "../Motion/MotionComponent";
-import { todayReleasesType } from "../../Types/fetchDataTypes";
+import { mainAnimeType } from "../../Types/fetchDataTypes";
 import { getTodayReleases } from "../../utils/getData.js";
 
 export default function TodayAiring() {
@@ -33,7 +33,7 @@ export default function TodayAiring() {
   };
 
   const [sliderRef, setsliderRef] = useState<any>();
-  const [dataAiring, setdataAiring] = useState<todayReleasesType[]>([]);
+  const [dataAiring, setdataAiring] = useState<mainAnimeType[]>([]);
 
   useEffect(() => {
     const fetching = async () => {

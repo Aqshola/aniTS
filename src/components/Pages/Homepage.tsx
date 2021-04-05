@@ -1,7 +1,7 @@
 import CardDeck from "../Section/TodayAiring";
 import NowShowing from "../Section/NowShowing";
 import { MotionBox } from "../Motion/MotionComponent";
-import BrowseCategory from "../Section/TopCategory";
+import TopCategory from "../Section/TopCategory";
 
 export default function Homepage() {
   const item = {
@@ -24,7 +24,7 @@ export default function Homepage() {
       >
         <NowShowing />
         <CardDeck />
-        <BrowseCategory />
+        <TopCategory />
       </MotionBox>
     </>
   );

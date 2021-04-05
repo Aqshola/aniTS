@@ -9,7 +9,7 @@ import { todayReleasesType } from "../../Types/fetchDataTypes";
 
 type topTypes = "airing" | "upcoming";
 
-export default function BrowseCategory() {
+export default function TopCategory() {
   const settings = {
     speed: 500,
     slidesToShow: 5,

@@ -3,23 +3,13 @@ export const getTodayReleases = async () => {
     weekday: "long",
   }).format(new Date());
 
-  const data = await fetch(`https://api.jikan.moe/v3/schedule/${day}`);
-  const parsedData = await data.json();
-
-  if (!data.ok) {
-    throw new Error(data.statusText);
-  }
-  return await parsedData[day.toLowerCase()];
+  const data = await fetching(`https://api.jikan.moe/v3/schedule/${day}`);
+  return await data[day.toLowerCase()];
 };
 
 export const getNowShowing = async () => {
   const data = await fetch(`https://api.jikan.moe/v3/schedule`);
-  const parsedData = await data.json();
   const parsedArray = [];
-
-  if (!data.ok) {
-    throw new Error(data.statusText);
-  }
 
   const notAllow = [
     "request_hash",
@@ -28,12 +18,12 @@ export const getNowShowing = async () => {
     "other",
     "unknown",
   ];
-  const filterData = Object.keys(parsedData)
+  const filterData = Object.keys(data)
     .filter((key) => !notAllow.includes(key))
     .reduce((obj, key) => {
       return {
         ...obj,
-        [key]: parsedData[key],
+        [key]: data[key],
       };
     }, {});
   for (let item in filterData) {
@@ -44,43 +34,39 @@ export const getNowShowing = async () => {
 };
 
 export const getTopCategory = async (category) => {
-  const data = await fetch(`https://api.jikan.moe/v3/top/anime/1/${category}`);
-  const parsedData = await data.json();
+  const data = await fetching(
+    `https://api.jikan.moe/v3/top/anime/1/${category}`
+  );
 
-  if (!data.ok) {
-    throw new Error(data.statusText);
-  }
-  return parsedData.top;
+  return data.top;
 };
 
 export const getDetailAnime = async (id) => {
-  const data = await fetch(`https://api.jikan.moe/v3/anime/${id}`);
-  const parsedData = await data.json();
-  if (!data.ok) {
-    throw new Error(data.statusText);
-  }
-
-  return parsedData;
+  const data = await fetching(`https://api.jikan.moe/v3/anime/${id}`);
+  return data;
 };
 
 export const getRecomend = async (id) => {
-  const data = await fetch(
+  const data = await fetching(
     `https://api.jikan.moe/v3/anime/${id}/recommendations`
   );
-  const parsedData = await data.json();
-
-  if (!data.ok) {
-    throw new Error(data.statusText);
-  }
-  return parsedData.recommendations;
+  return data.recommendations;
 };
 
 export const getSearchAnime = async (name) => {
-  const data = await fetch(`https://api.jikan.moe/v3/search/anime?q=${name}`);
-  const parsedData = await data.json();
+  const data = await fetching(
+    `https://api.jikan.moe/v3/search/anime?q=${name}`
+  );
+  return data.results;
+};
+
+const fetching = async (url) => {
+  const data = await fetch(url);
+  const body = data.json();
 
   if (!data.ok) {
     throw new Error(data.statusText);
   }
-  return parsedData.results;
+
+  return body;
 };

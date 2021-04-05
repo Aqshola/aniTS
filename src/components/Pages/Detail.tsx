@@ -13,7 +13,7 @@ import { MotionBox } from "../Motion/MotionComponent";
 import { useEffect, useState } from "react";
 import { getDetailAnime, getRecomend } from "../../utils/getData";
 import { details, mainAnimeType } from "../../Types/fetchDataTypes";
-import { Helmet } from "react-helmet";
+import { Helmet } from "react-helmet-async";
 
 interface route {
   id: string;

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Slider from "react-slick";
-import { Box, Heading } from "@chakra-ui/react";
+import { Box, Heading, Skeleton } from "@chakra-ui/react";
 import HorizontalCard from "../Card/HorizontalCard";
 import { MotionBox } from "../Motion/MotionComponent";
 import { mainAnimeType } from "../../Types/fetchDataTypes";
@@ -27,11 +27,13 @@ export default function NowShowing() {
       },
     ],
   };
+  const [loading, setloading] = useState<boolean>(true);
 
   useEffect(() => {
     const fetching = async () => {
       const res = await getNowShowing();
       setnowShow(res);
+      setloading(false);
     };
 
     fetching();
@@ -43,7 +45,7 @@ export default function NowShowing() {
         Now Showing
       </Heading>
 
-      <Box position="relative">
+      <Skeleton minH="56" minW="full" isLoaded={!loading}>
         <Box paddingX={["0", "0", "3"]}>
           <Slider {...settings} className="relative" lazyLoad="ondemand">
             {nowShow
@@ -66,7 +68,7 @@ export default function NowShowing() {
               })}
           </Slider>
         </Box>
-      </Box>
+      </Skeleton>
     </MotionBox>
   );
 }

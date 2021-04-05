@@ -5,7 +5,7 @@ import VerticalCard from "../Card/VerticalCard";
 import { useEffect, useState } from "react";
 import { getSearchAnime } from "../../utils/getData";
 import { mainAnimeType } from "../../Types/fetchDataTypes";
-import { Helmet } from "react-helmet";
+import { Helmet } from "react-helmet-async";
 
 interface RouteInfo {
   name: string;

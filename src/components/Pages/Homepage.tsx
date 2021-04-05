@@ -2,7 +2,7 @@ import CardDeck from "../Section/TodayAiring";
 import NowShowing from "../Section/NowShowing";
 import { MotionBox } from "../Motion/MotionComponent";
 import TopCategory from "../Section/TopCategory";
-import { Helmet } from "react-helmet";
+import { Helmet } from "react-helmet-async";
 
 export default function Homepage() {
   return (

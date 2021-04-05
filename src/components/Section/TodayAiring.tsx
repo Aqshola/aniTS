@@ -1,4 +1,4 @@
-import { Box, Heading, Spacer } from "@chakra-ui/react";
+import { Box, Heading, Spacer, Skeleton } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import Slider from "react-slick";
 import VerticalCard from "../Card/VerticalCard";
@@ -34,11 +34,13 @@ export default function TodayAiring() {
 
   const [sliderRef, setsliderRef] = useState<any>();
   const [dataAiring, setdataAiring] = useState<mainAnimeType[]>([]);
+  const [loading, setloading] = useState<boolean>(true);
 
   useEffect(() => {
     const fetching = async () => {
       const res = await getTodayReleases();
       setdataAiring(res);
+      setloading(false);
     };
 
     fetching();
@@ -55,20 +57,22 @@ export default function TodayAiring() {
         </Box>
       </Box>
 
-      <Box position="relative" px={["0", "0", "5"]}>
-        <Slider {...settings} ref={setsliderRef}>
-          {dataAiring.map((res) => {
-            return (
-              <VerticalCard
-                key={res.mal_id}
-                image={res.image_url}
-                title={res.title}
-                id={res.mal_id}
-              />
-            );
-          })}
-        </Slider>
-      </Box>
+      <Skeleton minH="52" minW="96" isLoaded={!loading}>
+        <Box position="relative" px={["0", "0", "5"]}>
+          <Slider {...settings} ref={setsliderRef}>
+            {dataAiring.map((res) => {
+              return (
+                <VerticalCard
+                  key={res.mal_id}
+                  image={res.image_url}
+                  title={res.title}
+                  id={res.mal_id}
+                />
+              );
+            })}
+          </Slider>
+        </Box>
+      </Skeleton>
     </MotionBox>
   );
 }

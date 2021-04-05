@@ -9,23 +9,31 @@ import { AnimatePresence } from "framer-motion";
 import ScrolltoTop from "./components/ScrollTop/ScrollToTop";
 import Result from "./components/Pages/Result";
 
+import { HelmetProvider } from "react-helmet-async";
 function App() {
   return (
-    <Container maxW="container.xl" margin="auto" padding="5" overflow="hidden">
-      <MotionBox initial="hidden" animate="visible">
-        <Router>
-          <ScrolltoTop />
-          <Nav />
-          <AnimatePresence>
-            <Switch>
-              <Route exact path="/" component={Homepage} />
-              <Route exact path="/detail/:id" component={Detail} />
-              <Route exact path="/result/:name" component={Result} />
-            </Switch>
-          </AnimatePresence>
-        </Router>
-      </MotionBox>
-    </Container>
+    <HelmetProvider>
+      <Container
+        maxW="container.xl"
+        margin="auto"
+        padding="5"
+        overflow="hidden"
+      >
+        <MotionBox initial="hidden" animate="visible">
+          <Router>
+            <ScrolltoTop />
+            <Nav />
+            <AnimatePresence>
+              <Switch>
+                <Route exact path="/" component={Homepage} />
+                <Route exact path="/detail/:id" component={Detail} />
+                <Route exact path="/result/:name" component={Result} />
+              </Switch>
+            </AnimatePresence>
+          </Router>
+        </MotionBox>
+      </Container>
+    </HelmetProvider>
   );
 }
 

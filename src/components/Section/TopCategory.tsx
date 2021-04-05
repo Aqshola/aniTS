@@ -1,4 +1,4 @@
-import { Box, Heading, Spacer } from "@chakra-ui/react";
+import { Box, Heading, Spacer, Skeleton } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import Slider from "react-slick";
 import SlideArrow from "../Button/SlideArrow";
@@ -37,6 +37,7 @@ export default function TopCategory() {
   const [sliderRef, setsliderRef] = useState<any>();
   const [topCategory, settopCategory] = useState<topTypes>("airing");
   const [dataTop, setdataTop] = useState<mainAnimeType[]>([]);
+  const [loading, setloading] = useState<boolean>(true);
 
   const _changeTop = (e: any) => {
     settopCategory(e.target.name);
@@ -44,8 +45,10 @@ export default function TopCategory() {
 
   useEffect(() => {
     const fetching = async () => {
+      setloading(true);
       const result = await getTopCategory(topCategory);
       setdataTop(result);
+      setloading(false);
     };
     fetching();
   }, [settopCategory, topCategory]);
@@ -87,18 +90,20 @@ export default function TopCategory() {
         </LinkButton>
       </Box>
 
-      <Box position="relative" px={["0", "0", "5"]} w="full">
-        <Slider {...settings} ref={setsliderRef}>
-          {dataTop.map((res) => (
-            <VerticalCard
-              key={res.mal_id}
-              title={res.title}
-              image={res.image_url}
-              id={res.mal_id}
-            />
-          ))}
-        </Slider>
-      </Box>
+      <Skeleton minH="52" minW="full" isLoaded={!loading}>
+        <Box position="relative" px={["0", "0", "5"]} w="full">
+          <Slider {...settings} ref={setsliderRef}>
+            {dataTop.map((res) => (
+              <VerticalCard
+                key={res.mal_id}
+                title={res.title}
+                image={res.image_url}
+                id={res.mal_id}
+              />
+            ))}
+          </Slider>
+        </Box>
+      </Skeleton>
     </Box>
   );
 }

@@ -1,4 +1,4 @@
-import { Heading, Box } from "@chakra-ui/react";
+import { Heading, Box, Skeleton } from "@chakra-ui/react";
 import { MotionBox } from "../Motion/MotionComponent";
 import { useParams } from "react-router-dom";
 import VerticalCard from "../Card/VerticalCard";
@@ -30,10 +30,14 @@ export default function Result() {
     },
   };
 
+  const [loading, setloading] = useState(true);
+
   useEffect(() => {
     const fetching = async () => {
+      setloading(true);
       const res = await getSearchAnime(name);
       setsearchData(res);
+      setloading(false);
     };
 
     fetching();
@@ -44,24 +48,26 @@ export default function Result() {
   return (
     <MotionBox minH="100vh" p="5" variants={animateEntrance}>
       <Heading textAlign="center" fontWeight="normal">
-        Found {searchData.length} result <br></br>for "{name}"
+        Found {loading ? "?" : searchData.length} result <br></br>for "{name}"
       </Heading>
-      <Box
-        mt="10"
-        display="flex"
-        w="full"
-        justifyContent="space-between"
-        flexWrap="wrap"
-      >
-        {searchData.map((data) => (
-          <VerticalCard
-            title={data.title}
-            image={data.image_url}
-            key={data.mal_id}
-            id={data.mal_id}
-          />
-        ))}
-      </Box>
+      <Skeleton isLoaded={!loading} minH="64" minW="96">
+        <Box
+          mt="10"
+          display="flex"
+          w="full"
+          justifyContent="space-between"
+          flexWrap="wrap"
+        >
+          {searchData.map((data) => (
+            <VerticalCard
+              title={data.title}
+              image={data.image_url}
+              key={data.mal_id}
+              id={data.mal_id}
+            />
+          ))}
+        </Box>
+      </Skeleton>
     </MotionBox>
   );
 }

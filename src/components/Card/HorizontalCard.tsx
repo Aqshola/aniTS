@@ -1,20 +1,26 @@
 import { Box, Flex, Heading, Image } from "@chakra-ui/react";
 import React from "react";
+import { Link as RouterLink } from "react-router-dom";
+import { MotionBox } from "../Motion/MotionComponent";
 
 type Props = {
   title: string;
   image: string;
+  id: number;
 };
 
 export default function HorizontalCard(props: Props) {
   return (
-    <>
-      <Box
+    <RouterLink to={`/detail/${props.id}`}>
+      <MotionBox
         w="96"
         h="80"
         display={["none", "none", "flex"]}
         flexDirection="column"
         rounded="lg"
+        whileTap={{
+          scale: 0.9,
+        }}
       >
         <Box w="full" h="80%" display="flex" rounded="md" overflow="hidden">
           <Image
@@ -31,8 +37,8 @@ export default function HorizontalCard(props: Props) {
             </Heading>
           </Flex>
         </Box>
-      </Box>
-      <Box
+      </MotionBox>
+      <MotionBox
         w="full"
         h="60"
         rounded="md"
@@ -46,6 +52,9 @@ export default function HorizontalCard(props: Props) {
         justifyContent="flex-end"
         p="5"
         overflow="hidden"
+        whileTap={{
+          scale: 0.9,
+        }}
       >
         <Box
           position="absolute"
@@ -65,7 +74,7 @@ export default function HorizontalCard(props: Props) {
             {props.title}
           </Heading>
         </Box>
-      </Box>
-    </>
+      </MotionBox>
+    </RouterLink>
   );
 }

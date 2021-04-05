@@ -1,27 +1,21 @@
 import React from "react";
 import { Box, Heading, Image } from "@chakra-ui/react";
 import { MotionBox, MotionImage } from "../Motion/MotionComponent";
-import { useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 export default function VerticalCard(props: {
   title?: string;
   image?: string;
   id: number;
 }) {
-  const history = useHistory();
-
   const imageMotion = {
     hover: {
       scale: 1.3,
     },
   };
 
-  const _handleRoute = () => {
-    history.push(`/detail/${props.id}`);
-  };
-
   return (
-    <>
+    <Link to={`/detail/${props.id}`}>
       <MotionBox
         display={["none", "none", "flex"]}
         flexDir="column"
@@ -30,7 +24,6 @@ export default function VerticalCard(props: {
           scale: 0.9,
         }}
         mb="10"
-        onClick={_handleRoute}
       >
         <MotionBox
           w="100%"
@@ -48,7 +41,6 @@ export default function VerticalCard(props: {
         </Box>
       </MotionBox>
       <MotionBox
-        onClick={_handleRoute}
         initial="rest"
         whileHover="hover"
         whileTap={{
@@ -102,6 +94,6 @@ export default function VerticalCard(props: {
           </Heading>
         </Box>
       </MotionBox>
-    </>
+    </Link>
   );
 }

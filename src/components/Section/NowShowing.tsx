@@ -65,6 +65,7 @@ export default function NowShowing() {
                       title={res.title}
                       key={res.mal_id}
                       image={res.image_url}
+                      id={res.mal_id}
                     />
                   );
                 })}

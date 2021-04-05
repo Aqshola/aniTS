@@ -1,4 +1,4 @@
-import { Box, Heading, Spacer, Skeleton } from "@chakra-ui/react";
+import { Box, Heading, Spacer } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import Slider from "react-slick";
 import SlideArrow from "../Button/SlideArrow";
@@ -37,10 +37,10 @@ export default function TopCategory() {
   const [sliderRef, setsliderRef] = useState<any>();
   const [topCategory, settopCategory] = useState<topTypes>("airing");
   const [dataTop, setdataTop] = useState<todayReleasesType[]>([]);
-  const [loading, setloading] = useState<boolean>(true);
+  // const [loading, setloading] = useState<boolean>(true);
 
   const _changeTop = (e: any) => {
-    setloading(true);
+    // setloading(true);
     settopCategory(e.target.name);
   };
 
@@ -48,7 +48,7 @@ export default function TopCategory() {
     const fetching = async () => {
       const result = await getTopCategory(topCategory);
       setdataTop(result);
-      setloading(false);
+      // setloading(false);
     };
     fetching();
   }, [settopCategory, topCategory]);

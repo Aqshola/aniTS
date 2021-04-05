@@ -8,7 +8,7 @@ export const getTodayReleases = async () => {
 };
 
 export const getNowShowing = async () => {
-  const data = await fetch(`https://api.jikan.moe/v3/schedule`);
+  const data = await fetching(`https://api.jikan.moe/v3/schedule`);
   const parsedArray = [];
 
   const notAllow = [

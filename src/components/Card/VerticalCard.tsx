@@ -17,6 +17,7 @@ export default function VerticalCard(props: {
   return (
     <Link to={`/detail/${props.id}`}>
       <MotionBox
+        aria-hidden="true"
         display={["none", "none", "flex"]}
         flexDir="column"
         w="52"
@@ -32,7 +33,15 @@ export default function VerticalCard(props: {
           bgColor="gray.700"
           overflow="hidden"
         >
-          <Image src={props.image} boxSize="100%" objectFit="cover" />
+          <Image
+            src={props.image}
+            boxSize="100%"
+            w="full"
+            h="full"
+            objectFit="cover"
+            alt={props.title + " poster"}
+            loading="lazy"
+          />
         </MotionBox>
         <Box>
           <Heading as="h1" fontWeight="semibold" size="md" w="full">
@@ -41,6 +50,7 @@ export default function VerticalCard(props: {
         </Box>
       </MotionBox>
       <MotionBox
+        aria-hidden="true"
         initial="rest"
         whileHover="hover"
         whileTap={{
@@ -72,6 +82,10 @@ export default function VerticalCard(props: {
             objectFit="cover"
             zIndex="0"
             variants={imageMotion}
+            alt={props.title + " poster"}
+            w="full"
+            h="full"
+            loading="lazy"
           />
         </Box>
         <Box

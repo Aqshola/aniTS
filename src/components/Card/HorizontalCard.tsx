@@ -13,6 +13,7 @@ export default function HorizontalCard(props: Props) {
   return (
     <RouterLink to={`/detail/${props.id}`}>
       <MotionBox
+        aria-hidden="true"
         w="96"
         h="80"
         display={["none", "none", "flex"]}
@@ -27,7 +28,10 @@ export default function HorizontalCard(props: Props) {
             src={props.image}
             objectFit="cover"
             w="full"
+            h="full"
             filter="blur(0.1px)"
+            alt={props.title + " poster"}
+            loading="lazy"
           />
         </Box>
         <Box w="full" padding="2" minH="20%">
@@ -39,6 +43,7 @@ export default function HorizontalCard(props: Props) {
         </Box>
       </MotionBox>
       <MotionBox
+        aria-hidden="true"
         w="full"
         h="60"
         rounded="md"

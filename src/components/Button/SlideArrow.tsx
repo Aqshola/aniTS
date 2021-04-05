@@ -24,6 +24,7 @@ export default function SlideArrow(props: {
         onClick={props.onClick}
         outline="none"
         border="none"
+        aria-label={props.typeArrow === "left" ? "Previous" : "Next"}
       >
         {props.typeArrow === "left" && (
           <svg

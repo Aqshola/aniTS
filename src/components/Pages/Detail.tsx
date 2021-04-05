@@ -130,6 +130,7 @@ export default function Detail() {
               minW="64"
             >
               <Image
+                loading="lazy"
                 src={detail?.image_url}
                 objectFit="cover"
                 objectPosition={["top", "top", "center"]}

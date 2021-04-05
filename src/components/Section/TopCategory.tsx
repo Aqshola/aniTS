@@ -37,10 +37,8 @@ export default function TopCategory() {
   const [sliderRef, setsliderRef] = useState<any>();
   const [topCategory, settopCategory] = useState<topTypes>("airing");
   const [dataTop, setdataTop] = useState<todayReleasesType[]>([]);
-  // const [loading, setloading] = useState<boolean>(true);
 
   const _changeTop = (e: any) => {
-    // setloading(true);
     settopCategory(e.target.name);
   };
 
@@ -48,7 +46,6 @@ export default function TopCategory() {
     const fetching = async () => {
       const result = await getTopCategory(topCategory);
       setdataTop(result);
-      // setloading(false);
     };
     fetching();
   }, [settopCategory, topCategory]);
@@ -89,13 +86,7 @@ export default function TopCategory() {
           Top Upcoming
         </LinkButton>
       </Box>
-      {/* 
-      <Skeleton
-        minH={["40vh", "40vh", "50vh"]}
-        display="block"
-        w="full"
-        isLoaded={dataTop.length > 0 && !loading}
-      > */}
+
       <Box position="relative" px={["0", "0", "5"]} w="full">
         <Slider {...settings} ref={setsliderRef}>
           {dataTop.map((res) => (
@@ -108,7 +99,6 @@ export default function TopCategory() {
           ))}
         </Slider>
       </Box>
-      {/* </Skeleton> */}
     </Box>
   );
 }

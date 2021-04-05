@@ -55,11 +55,6 @@ export default function TodayAiring() {
         </Box>
       </Box>
 
-      {/* <Skeleton
-        minH="30vh"
-        display="block"
-        isLoaded={dataAiring.length === 0 ? false : true}
-      > */}
       <Box position="relative" px={["0", "0", "5"]}>
         <Slider {...settings} ref={setsliderRef}>
           {dataAiring.map((res) => {
@@ -74,7 +69,6 @@ export default function TodayAiring() {
           })}
         </Slider>
       </Box>
-      {/* </Skeleton> */}
     </MotionBox>
   );
 }

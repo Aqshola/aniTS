@@ -42,12 +42,7 @@ export default function NowShowing() {
       <Heading size="lg" mb="7">
         Now Showing
       </Heading>
-      {/* <Skeleton
-        minH={["40vh", "40vh", "50vh"]}
-        display="block"
-        w="full"
-        isLoaded={nowShow.length === 0 ? false : true}
-      > */}
+
       <Box position="relative">
         <Box paddingX={["0", "0", "3"]}>
           <Slider {...settings} className="relative" lazyLoad="ondemand">
@@ -72,7 +67,6 @@ export default function NowShowing() {
           </Slider>
         </Box>
       </Box>
-      {/* </Skeleton> */}
     </MotionBox>
   );
 }

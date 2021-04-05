@@ -27,8 +27,11 @@ export default function Nav() {
   return (
     <Box display="flex" w="full" py="3" alignItems="center">
       <Link to="/">
-        <Heading size="md" cursor="pointer">
-          MovieApp
+        <Heading size="md" cursor="pointer" display="flex" alignItems="center">
+          <Box backgroundColor="blackAlpha.900" color="white" p="2">
+            Ani
+          </Box>
+          <Box>TS</Box>
         </Heading>
       </Link>
 
@@ -57,6 +60,7 @@ export default function Nav() {
           onChange={_handleChange}
           onKeyPress={_handleRoute}
           value={keyboardValue}
+          variant="filled"
         />
       </InputGroup>
     </Box>
